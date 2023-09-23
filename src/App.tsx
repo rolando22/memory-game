@@ -1,7 +1,9 @@
+import { Header } from './components';
+
 export function App() {
 	return (
-		<h1 className="text-3xl font-bold underline">
-			Hello world!
-		</h1>
+		<div className='grid content-center justify-center p-10'>
+			<Header />
+		</div>
 	);
 }
