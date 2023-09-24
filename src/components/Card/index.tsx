@@ -13,7 +13,7 @@ export function Card({ id, img, alt, flipped, matched, cardFlip }: Props) {
 
 	return (
 		<button 
-			className={`drop-shadow-md flex items-center justify-center ${flipped ? '[transform:rotateY(10deg)]' : 'bg-white'} cursor-pointer h-16 w-16 hover:scale-105 rounded-lg transition-all duration-1000`}
+			className={`drop-shadow-md flex items-center justify-center ${flipped ? '[transform:rotateY(10deg)]' : 'bg-gray-500'} cursor-pointer h-16 w-16 hover:scale-105 rounded-lg transition-all duration-1000`}
 			onClick={handleOnClickCardFlip}
 			disabled={flipped || matched}
 		>

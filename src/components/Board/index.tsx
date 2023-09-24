@@ -8,8 +8,7 @@ interface Props {
 
 export function Board({ cards, cardFlip }: Props) {
 	return (
-		<section className='grid grid-cols-4 content-center justify-center px-3 py-5 my-3'>
-			{/* <ul className='grid grid-cols-4 content-center justify-center'> */}
+		<section className='grid grid-cols-4 content-center justify-center gap-2 py-5'>
 			{cards.map(card => 
 				<Card 
 					key={card.id} 
@@ -21,7 +20,6 @@ export function Board({ cards, cardFlip }: Props) {
 					cardFlip={cardFlip}
 				/>
 			)}
-			{/* </ul> */}
 		</section>
 	);
 }

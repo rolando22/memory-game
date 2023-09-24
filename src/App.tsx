@@ -75,7 +75,7 @@ export function App() {
 	};
 
 	return (
-		<div className='grid content-center justify-center p-8'>
+		<div className='grid content-center justify-center gap-4 h-screen p-8'>
 			<Header moves={moves} />
 			<main>
 				<Board 
@@ -85,7 +85,7 @@ export function App() {
 			</main>
 			<footer className='flex justify-center'>
 				<button
-					className='bg-black font-semibold text-white rounded-md px-5 py-1 hover:bg-yellow-500 hover:text-black transition-all mb-3'
+					className='bg-black font-semibold text-white rounded-md px-5 py-1 hover:bg-yellow-500 hover:text-black transition-all'
 					onClick={reset}
 				>
 						Nuevo Juego
