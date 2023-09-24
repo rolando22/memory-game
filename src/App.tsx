@@ -30,13 +30,6 @@ export function App() {
 		createBoard();
 	}, []);
 
-	useEffect(() => {
-		if (cards.every(card => card.matched)) {
-			setGameOver(true);
-			setIsDisabled(true);
-		}
-	}, [cards]);
-
 	const cardFlip = (id: number) => {
 		if (isDisabled) return;
 		const newCards = structuredClone(cards);
@@ -65,6 +58,10 @@ export function App() {
 			}
 			setCards(newCards);
 		}
+		if (newCards.every(card => card.matched)) {
+			setGameOver(true);
+			setIsDisabled(true);
+		}
 	};
 
 	const closeModal = () => setGameOver(false);
@@ -86,6 +83,14 @@ export function App() {
 					cardFlip={cardFlip}
 				/>
 			</main>
+			<footer className='flex justify-center'>
+				<button
+					className='bg-black font-semibold text-white rounded-md px-5 py-1 hover:bg-yellow-500 hover:text-black transition-all mb-3'
+					onClick={reset}
+				>
+						Nuevo Juego
+				</button>
+			</footer>
 			{gameOver && 
 				<Modal 
 					closeModal={closeModal} 
