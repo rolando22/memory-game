@@ -9,4 +9,4 @@ Este repositorio contiene el código de una aplicación de un juego de memoria, 
 - TailwindCSS para los estilos.
 - TypeScript para el tipado del código.
 
-Puedes ver el demo aquí: ().
+Puedes ver el demo aquí: (https://rolando22.github.io/memory-game/).
