@@ -1,4 +1,8 @@
-export function Header() {
+interface Props {
+	moves: number
+}
+
+export function Header({ moves }: Props) {
 	return (
 		<header>
 			<h1 className='font-bold text-2xl my-8'>
@@ -6,7 +10,7 @@ export function Header() {
 			</h1>
 			<section className='flex justify-between'>
 				<p>Movimientos</p>
-				<p>0</p>
+				<p>{moves}</p>
 			</section>
 		</header>
 	);

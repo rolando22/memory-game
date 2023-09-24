@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Board, Header } from './components';
+import { Board, Header, Modal } from './components';
 import type { Card } from './types/card';
 import { imgs } from './utils/data';
 
@@ -10,7 +10,7 @@ export function App() {
 	const [flippedCards, setFlippedCards] = useState<number[]>([]);
 	const [gameOver, setGameOver] = useState(false);
 
-	useEffect(() => {
+	const createBoard = () => {
 		const newCards: Card[] = imgs
 			.flatMap(img => {
 				const duplicate = {
@@ -22,9 +22,20 @@ export function App() {
 				...img,
 				flipped: false,
 				matched: false,
-			}));
+			})).sort(() => Math.random() - 0.5);
 		setCards(newCards);
+	};
+
+	useEffect(() => {
+		createBoard();
 	}, []);
+
+	useEffect(() => {
+		if (cards.every(card => card.matched)) {
+			setGameOver(true);
+			setIsDisabled(true);
+		}
+	}, [cards]);
 
 	const cardFlip = (id: number) => {
 		if (isDisabled) return;
@@ -54,21 +65,34 @@ export function App() {
 			}
 			setCards(newCards);
 		}
-		if (cards.every(card => card.matched)) {
-			setGameOver(true);
-			setIsDisabled(true);
-		}
+	};
+
+	const closeModal = () => setGameOver(false);
+
+	const reset = () => {
+		createBoard();
+		setMoves(0);
+		setIsDisabled(false);
+		setFlippedCards([]);
+		setGameOver(false);
 	};
 
 	return (
 		<div className='grid content-center justify-center p-8'>
-			<Header />
+			<Header moves={moves} />
 			<main>
 				<Board 
 					cards={cards} 
 					cardFlip={cardFlip}
 				/>
 			</main>
+			{gameOver && 
+				<Modal 
+					closeModal={closeModal} 
+					reset={reset} 
+					moves={moves} 
+				/>
+			}
 		</div>
 	);
 }
